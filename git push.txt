@@ -1,0 +1,13 @@
+git init
+
+git status
+
+git add *
+
+git commit -m 'как хочешь'
+
+git push --set-upstream origin main
+
+# если ссылка папки не указана
+git remote add origin "ссылка с гита"
+
