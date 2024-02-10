@@ -1,8 +1,9 @@
-def getstring():
-    a = input()
-    return a
-def printstring(a):
-    print(a)
+class number:
+    def getstring():
+        a = input()
+        return a
+    def printstring(a):
+        print(a)
 
-a = getstring()
-printstring(a)
+a = number.getstring()
+number.printstring(a)
