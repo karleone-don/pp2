@@ -13,8 +13,8 @@ class Points:
     def dist(self, left):
         return round(((self.x - left.x) ** 2 + (self.y - left.y) ** 2) ** 0.5)
 
-x1, y1 = map(int, input("Enter the coordinates of the first point: ").split())
-x2, y2 = map(int, input("Enter the first coordinates of the 2nd points: ").split())
+x1, y1 = map(int, input("Enter the coordinates of the 1st point: ").split())
+x2, y2 = map(int, input("Enter the coordinates of the 2nd points: ").split())
 
 p1 = Points(x1, y1)
 p2 = Points(x2, y2)

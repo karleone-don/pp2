@@ -10,6 +10,7 @@ def score(movie_name):
             if movie["imdb"] > 5.5:
                 print("True")
     if not has:
-        print("we don't have movie in our data")
+        print("we don't have this movie in our data")
+
 movie = input("which movie do you wanna see?\n")
 score(movie)
