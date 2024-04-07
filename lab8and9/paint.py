@@ -44,6 +44,10 @@ rect1 = rect.move(10, 10)
 rect2 = rect.move(95, 10)
 rect3 = rect.move(180, 10)
 rect4 = rect.move(265, 10)
+rect5 = rect.move(350, 10)
+rect6 = rect.move(435, 10)
+rect7 = rect.move(520, 10)
+rect8 = rect.move(605, 10)
 
 bucket = pygame.image.load('lab8/img/bucket.png')
 bucket = pygame.transform.scale(bucket, (75, 75))
@@ -85,6 +89,7 @@ tools = 4
 screen.fill(BLACK)
 
 poligons = False
+colors = False
 
 while True:
     panel.fill(DARK_GRAY)
@@ -95,6 +100,31 @@ while True:
             pygame.draw.rect(panel, BLUE, rect1, 1)
         if tool == 4:
             pygame.draw.rect(panel, BLUE, rect2, 1)
+    elif colors:
+        pygame.draw.rect(panel, BLUE, (15, 15, 65, 65), border_radius=10)
+        pygame.draw.rect(panel, WHITE, (100, 15, 65, 65), border_radius=10)
+        pygame.draw.rect(panel, RED, (185, 15, 65, 65), border_radius=10)
+        pygame.draw.rect(panel, YELLOW, (270, 15, 65, 65), border_radius=10)
+        pygame.draw.rect(panel, GREEN, (355, 15, 65, 65), border_radius=10)
+        pygame.draw.rect(panel, ORANGE, (440, 15, 65, 65), border_radius=10)
+        pygame.draw.rect(panel, VIOLETE, (525, 15, 65, 65), border_radius=10)
+        pygame.draw.rect(panel, BLACK, (610, 15, 65, 65), border_radius=10)
+        if COLOR == BLUE:
+            pygame.draw.rect(panel, BLUE, rect1, 1)
+        elif COLOR == WHITE:
+            pygame.draw.rect(panel, BLUE, rect2, 1)
+        elif COLOR == RED:
+            pygame.draw.rect(panel, BLUE, rect3, 1)
+        elif COLOR == YELLOW:
+            pygame.draw.rect(panel, BLUE, rect4, 1)
+        elif COLOR == GREEN:
+            pygame.draw.rect(panel, BLUE, rect5, 1)
+        elif COLOR == ORANGE:
+            pygame.draw.rect(panel, BLUE, rect6, 1)
+        elif COLOR == VIOLETE:
+            pygame.draw.rect(panel, BLUE, rect7, 1)
+        elif COLOR == BLACK:
+            pygame.draw.rect(panel, BLUE, rect8, 1)
     else:
         panel.blit(pencil, (10, 10))
         panel.blit(bucket, (95, 10))
@@ -126,17 +156,17 @@ while True:
                 elif tool == 2:
                     if pos[1] >= 100:
                         origin_color = screen.get_at((x1, y1))
-                        if origin_color != fill_color:
+                        if origin_color != COLOR:
                             queue.append((x1, y1))
-                            screen.set_at((x1, y1), fill_color)
+                            screen.set_at((x1, y1), COLOR)
 
                             while len(queue):
                                 cur_pos = queue[0]
                                 queue.pop(0)
-                                step(screen, cur_pos[0] + 1, cur_pos[1], origin_color,  fill_color)
-                                step(screen, cur_pos[0] - 1, cur_pos[1], origin_color,  fill_color)
-                                step(screen, cur_pos[0], cur_pos[1] + 1, origin_color,  fill_color)
-                                step(screen, cur_pos[0], cur_pos[1] - 1, origin_color,  fill_color)
+                                step(screen, cur_pos[0] + 1, cur_pos[1], origin_color,  COLOR)
+                                step(screen, cur_pos[0] - 1, cur_pos[1], origin_color,  COLOR)
+                                step(screen, cur_pos[0], cur_pos[1] + 1, origin_color,  COLOR)
+                                step(screen, cur_pos[0], cur_pos[1] - 1, origin_color,  COLOR)
                 if tool == 3:
                     pygame.draw.rect(screen, BLACK, (x1-25, y1-25, 50, 50), border_radius=10)
                 mouse_pressed = True
@@ -146,6 +176,23 @@ while True:
                             tool = 1
                         elif 95 < pos[0] and pos[0] < 175:
                             tool = 4
+                    elif colors:
+                        if 10 < pos[0] and pos[0] < 90:
+                            COLOR = BLUE
+                        elif 95 < pos[0] and pos[0] < 175:
+                            COLOR = WHITE
+                        elif 180 < pos[0] and pos[0] < 260:
+                            COLOR = RED
+                        elif 265 < pos[0] and pos[0] < 345:
+                            COLOR = YELLOW
+                        elif 350 < pos[0] and pos[0] < 430:
+                            COLOR = GREEN
+                        elif 435 < pos[0] and pos[0] < 515:
+                            COLOR = ORANGE
+                        elif 520 < pos[0] and pos[0] < 600:
+                            COLOR = VIOLETE
+                        elif 615 < pos[0] and pos[0] < 695:
+                            COLOR = BLACK
                     else:
                         if 10 < pos[0] and pos[0] < 90:
                             tool = 0
@@ -155,8 +202,11 @@ while True:
                             tool = 3
                         elif 265 < pos[0] and pos[0] < 345:
                             poligons = True
+                        elif 605 < pos[0] and pos[0] < 685:
+                            colors = True
                 else:
                     poligons = False
+                    colors = False
 
         if e.type == pygame.MOUSEBUTTONUP:
             another_layer.blit(screen, (0, 0))
