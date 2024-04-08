@@ -11,7 +11,7 @@ window = pygame.display.set_mode((840, 600))
 pygame.display.set_caption("Game")
 
 # Загрузка изображения дороги
-road =  pygame.image.load('lab8/img/road.png')
+road =  pygame.image.load('lab8and9/img/road.png')
 
 # Установка частоты кадров
 FPS = 60
@@ -30,7 +30,7 @@ font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, BLACK)
 
 # Загрузка изображения монеты
-coin = pygame.image.load('lab8/img/coin.png')
+coin = pygame.image.load('lab8and9/img/coin.png')
 coin.set_colorkey(WHITE)
 coin = pygame.transform.scale(coin, (20, 20))
 
@@ -38,7 +38,7 @@ coin = pygame.transform.scale(coin, (20, 20))
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('lab8/img/car1.png')
+        self.image = pygame.image.load('lab8and9/img/car1.png')
         self.image.set_colorkey((255, 255, 255))
         self.image = pygame.transform.rotate(self.image, 90)
         self.image = pygame.transform.scale(self.image, (102, 150))
@@ -75,7 +75,7 @@ class Player(pygame.sprite.Sprite):
 class Car(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('lab8/img/car2.png')
+        self.image = pygame.image.load('lab8and9/img/car2.png')
         self.image.set_colorkey((255, 255, 255))
         self.image = pygame.transform.rotate(self.image, 270)
         self.image = pygame.transform.scale(self.image, (100, 150))
@@ -100,7 +100,7 @@ class Car(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('lab8/img/coin.png')
+        self.image = pygame.image.load('lab8and9/img/coin.png')
         self.image.set_colorkey(WHITE)
         self.image = pygame.transform.scale(self.image, (75, 75))
         self.rect = self.image.get_rect()
